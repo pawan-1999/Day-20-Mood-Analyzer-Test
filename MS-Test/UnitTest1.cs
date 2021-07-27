@@ -29,7 +29,7 @@ namespace MoodAnalyserTest
         {
             MoodAnalyser obj = new MoodAnalyser(null);
             string result = obj.analyseMood();
-            //Assert.AreEqual("HAPPY", result);
+            Assert.AreEqual("HAPPY", result);
 
         }
     }
