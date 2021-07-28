@@ -24,6 +24,8 @@ namespace Mood_Analyser
                 }
                 if (this.message.Contains("sad"))
                     return "SAD";
+                else if (this.message.Contains("I"))
+                    return "SAD";
                 else
                     return "HAPPY";
             }

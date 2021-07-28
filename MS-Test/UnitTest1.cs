@@ -8,7 +8,7 @@ namespace MoodAnalyserTest
     {
         #region Refactor UC-1
         [TestMethod]
-        public void GivenMoodHappy_ShouldReturnHappy()
+        public void GivenDifferentString_ShouldReturnSad()
         {
             MoodAnalyser obj = new MoodAnalyser("I am in happy mood");
             string result = obj.analyseMood();
@@ -48,6 +48,40 @@ namespace MoodAnalyserTest
         }
         #endregion UC-3
 
+        #region UC-4
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject()
+        {
+            string message = null;
+            object expected = new MoodAnalyser(message);
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(obj);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
+
+        public void GivenWrongClassName_ShouldThrowException()
+        {
+            string message = null;
+            object expected = new MoodAnalyser(message);
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser.Moodanalyser", "MoodAnalyser");
+            expected.Equals(obj);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
+        public void GivenClassConstructerNotProper_ShouldThrowException()
+        {
+            string message = null;
+            object expected = new MoodAnalyser(message);
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser.Moodanalyser", "MoodAnalyser(int)");
+            expected.Equals(obj);
+
+        }
+        #endregion UC-4
     }
 
 }
